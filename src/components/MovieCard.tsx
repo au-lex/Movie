@@ -5,7 +5,7 @@ import AppleIcon from '../assets/apple.svg'
 import classNames from 'classnames'
 import { useGlobalContext } from '../components/app-container'
 import { MediaType } from '../types'
-import { formatUTCDate, roundUpDecimal } from '../utils'
+import { formatUTCDate, getFirstThreeDigits, roundUpDecimal } from '../utils'
 
 type movieCardType = {
   poster?: any

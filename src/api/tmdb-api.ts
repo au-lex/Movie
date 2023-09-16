@@ -27,22 +27,22 @@ axiosClient.interceptors.request.use((config) => {
   }
 })
 
-export const getTrendings = async (mediaType: MediaType): Promise<Film[]> => {
-  try {
-    const { data } = await axiosClient.get<
-      any,
-      AxiosResponse<{
-        results: unknown[]
-      }>
-    >(`/trending/${mediaType}/week`)
+// export const getTrendings = async (mediaType: MediaType): Promise<Film[]> => {
+//   try {
+//     const { data } = await axiosClient.get<
+//       any,
+//       AxiosResponse<{
+//         results: unknown[]
+//       }>
+//     >(`/trending/${mediaType}/week`)
 
-    return data.results.map((val) => formatResult(val, mediaType))
-  } catch (error) {
-    console.error(error)
-  }
+//     return data.results.map((val) => formatResult(val, mediaType))
+//   } catch (error) {
+//     console.error(error)
+//   }
 
-  return []
-}
+//   return []
+// }
 
 export const getMovieReleaseDates = async (
   movieId: number
@@ -63,80 +63,80 @@ export const getMovieReleaseDates = async (
   }
 }
 
-export const getInTheaters = async (): Promise<Film[]> => {
-  try {
-    const { data } = await axiosClient.get<
-      any,
-      AxiosResponse<{
-        results: unknown[]
-      }>
-    >(`/movie/now_playing`)
+// export const getInTheaters = async (): Promise<Film[]> => {
+//   try {
+//     const { data } = await axiosClient.get<
+//       any,
+//       AxiosResponse<{
+//         results: unknown[]
+//       }>
+//     >(`/movie/now_playing`)
 
-    return data.results.map((val) => formatResult(val, 'movie'))
-  } catch (error) {
-    console.error(error)
-  }
+//     return data.results.map((val) => formatResult(val, 'movie'))
+//   } catch (error) {
+//     console.error(error)
+//   }
 
-  return []
-}
+//   return []
+// }
 
-export const getPopulars = async (
-  mediaType: MediaType,
-  page = 1
-): Promise<Film[]> => {
-  try {
-    const { data } = await axiosClient.get<
-      any,
-      AxiosResponse<{
-        results: unknown[]
-      }>
-    >(`/${mediaType}/popular`, {
-      params: {
-        page,
-      },
-    })
+// export const getPopulars = async (
+//   mediaType: MediaType,
+//   page = 1
+// ): Promise<Film[]> => {
+//   try {
+//     const { data } = await axiosClient.get<
+//       any,
+//       AxiosResponse<{
+//         results: unknown[]
+//       }>
+//     >(`/${mediaType}/popular`, {
+//       params: {
+//         page,
+//       },
+//     })
 
-    return data.results.map((val) => formatResult(val, mediaType))
-  } catch (error) {
-    console.error(error)
-  }
+//     return data.results.map((val) => formatResult(val, mediaType))
+//   } catch (error) {
+//     console.error(error)
+//   }
 
-  return []
-}
+//   return []
+// }
 
-export const getTopRated = async (
-  mediaType: MediaType,
-  page = 1
-): Promise<{
-  films: Film[]
-  totalPages: number
-}> => {
-  try {
-    const { data } = await axiosClient.get<
-      any,
-      AxiosResponse<{
-        results: unknown[]
-        total_pages: number
-      }>
-    >(`/${mediaType}/top_rated`, {
-      params: {
-        page,
-      },
-    })
+// export const getTopRated = async (
+//   mediaType: MediaType,
+//   page = 1
+// ): Promise<{
+//   films: Film[]
+//   totalPages: number
+// }> => {
+//   try {
+//     const { data } = await axiosClient.get<
+//       any,
+//       AxiosResponse<{
+//         results: unknown[]
+//         total_pages: number
+//       }>
+//     >(`/${mediaType}/top_rated`, {
+//       params: {
+//         page,
+//       },
+//     })
 
-    return {
-      films: data.results.map((val) => formatResult(val, mediaType)),
-      totalPages: data.total_pages,
-    }
-  } catch (error) {
-    console.error(error)
-  }
+//     return {
+//       films: data.results.map((val) => formatResult(val, mediaType)),
+//       totalPages: data.total_pages,
+//     }
+//   } catch (error) {
+//     console.error(error)
+//   }
 
-  return {
-    films: [],
-    totalPages: 0,
-  }
-}
+//   return {
+//     films: [],
+//     totalPages: 0,
+//   }
+// }
 
 export const search = async (
   query: string,

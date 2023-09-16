@@ -132,3 +132,13 @@ export function convertToShortForm(num: any) {
   }
   return parseInt(num)
 }
+
+export function getFirstThreeDigits(number: any) {
+  let numberString = number.toString()
+  let dotIndex = numberString.indexOf('.')
+  if (dotIndex !== -1) {
+    return numberString.substring(0, dotIndex + 3)
+  }
+
+  return numberString
+}
